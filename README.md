@@ -5,53 +5,17 @@ I decided to build a travel web app this morning. I had been looking at the [Sab
 **Follow along** to see how I did it - all the way from coding to deployment on EC2, built using ExpressJS & Angular.
 
 ## What are we building?
-I've always wanted to build an app that allows me to pick where I am, set my dates and a budget - and it tells me where all I could go. Basically, a "I don't care where I go this weekend - just get me out of here" app :) This is what I wanted to build in 2 hours: too ambitious? Perhaps not!
+destination and theme, give search result
 
 ## What you'll need to do this
 
-There are a few things you'll need to get this done in 2 hours - no cheating here, just basic stuff that I had on my machine already.
-+ **An editor**: SublimeText, Brackets or my choice - [Atom](https://atom.io/).
-+ **An AWS account**: I wont be covering setting up Amazon AWS. You could do this on Digital Ocean, Linode etc. too, so that will work as well.
-+ **nodejs**: This is fairly simple to install, so you can do that from [here](https://nodejs.org/)
-+ **git & a GitHub account**: This is to commit your code, and store it up on the web. Learn more at [GitHub](www.github.com) if you don't have this set up.
+put it on AWS and connect to database we just builded
 
 
-## Getting started: 8:00 am
 
-The first thing I did was sign-up for a [Sabre Developer Studio](https://developer.sabre.com/) account. 
 
-> Sabre is what is called a GDS (Global Distribution System). GDS's aggregate flight, hotel, cruise, taxi and other inventory and provide an interface to travel agents (Expedia, Travelocity) to complete the bookings. Amadeus is the other large GDS, but they aren't as developer friendly as Sabre from what I could see.
 
-Signing up for this was trivial - fill out a [registration form](https://developer.sabre.com/member/register), validated your email address and then get your API key and password.
-
-This took about 5 minutes to complete. After this, I spent some time looking at the REST API's that Sabre exposes. I loved the documentation that Sabre has, and was pleasantly surprised by it, since I had the impression that integrating with something like a GDS would be a painful thing to do.
-
-Specifically I spent some time looking at these two references:
-
-+ [Endpoints & URI's](https://developer.sabre.com/docs/read/rest_basics/endpoints_and_uris) under the REST basics section
-+ [REST API's](https://developer.sabre.com/docs/read/REST_APIs) which documents all the APIs that are exposed.
-
-FYI, Sabre also exposes much more functionality - like completing the booking, changing seats, cancellations etc. through a SOAP API, but I wasn't feeling dirty enough to do SOAP!
-
-While looking through these APIs, I identified two APIs that looked useful to me:
-
-1. **GET /v1/lists/supported/cities**: This returns a list of cities which have airports in them.
-2. **GET /v1/shop/flights/fares**: This returns a list of flight fares given an origin, start & end dates and a budget - just what I need!
-
-By now, it was about 8:20 am: 100 minutes left!
-
-## Writing some code: 8:20 am
-
-I decided to get my hands dirty with somde code. I found the Sabre had [published](https://github.com/SabreDevStudio/sabre-dev-studio-node) an npm module on GitHub that wraps their API's - handy!
-
-So, to get started I did this:
-
-```
-$ cd ~/Lab/
-$ mkdir sabrelab
-$ cd sabrelab
-$ npm install sabre-dev-studio --save-dev
-```
+API interface
 
 Then I cranked up my code editor and wrote some sample code to test the API's out, mostly the same stuff that was there on Sabre's GitHub account:
 
@@ -540,7 +504,7 @@ After this, I had to do two things, which I had forgotten:
 
 Once I had done this, I had my public facing server: at http://52.10.111.167.
 
-I looked at my watch, and it was 9:57 am... I had made it with just enough time to give me server an spin!
+
 
 ## Closing thoughts
 A few thoughts to close out - just my own learnings from the morning:
@@ -555,8 +519,6 @@ A few thoughts to close out - just my own learnings from the morning:
     + Use geo-location to auto-fill the start city
     + Wrap the entire thing in Ionic so there is a phone app version of this
 
-That's it - hope you had fun, and look forward to your comments! 
-[@appa](http://twitter.com/appa)
 
 
 
