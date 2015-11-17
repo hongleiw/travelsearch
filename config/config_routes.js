@@ -73,7 +73,7 @@ function GetItems(city,category,res){
   }
 
   client.scan("traveldb",opts,function(err,resp){
-    console.log(resp);
+    //console.log(resp);
     response(res,err,resp);
   });
 }
