@@ -31,7 +31,7 @@
       <md-card flex ng-controller="MainCtrl as ctrl">
         <md-card-content>
           <!-- The row for the city select autocomplete list -->
-          <md-content>
+          <!-- <md-content >
           <md-autocomplete  md-selected-item="ctrl.selectedItem"
             md-search-text="ctrl.searchText"
             md-items="item in ctrl.querySearch(ctrl.searchText)"
@@ -49,24 +49,24 @@
               Pick the city you want to start from!
           </md-tooltip>
           <p class="md-caption">NYC, CHI and LON work well</p>
-          </md-content>
+          </md-content> -->
           <!-- The row for the budget and dates -->
           <div layout>
             <md-input-container flex>
-              <md-select placeholder="Set your budget" ng-model="info.maxfare">
+              <md-select placeholder="Set your destination" ng-model="info.maxfare">
                 <div ng-repeat="p in prices">
                   <md-option value="{{p.value}}">{{p.show}}</md-option>
                 </div>
               </md-select>
             </md-input-container>
-            <md-input-container flex>
+            <!-- <md-input-container flex>
               <label>Start date</label>
               <input type="date" ng-model="info.departuredate">
             </md-input-container>
             <md-input-container flex>
               <label>End date</label>
               <input type="date" ng-model="info.returndate">
-            </md-input-container>
+            </md-input-container> -->
             <md-input-container flex>
               <md-select placeholder="Set your theme" ng-model="info.theme">
                 <div ng-repeat="q in themeslist track by $id($index)">
@@ -82,15 +82,31 @@
           </div>
 
           <!-- The results -->
-          <md-content ng-show="themes">
+          <md-content ng-show="data">
             <md-list>
               <md-subheader class="md-no-sticky">Results</md-subheader>
-              <md-list-item class="md-2-line" ng-repeat="item in themes | orderBy:'Theme'">
+
+              <md-list-item class="md-2-line" ng-repeat="item in data | orderBy:'TITLE'">
+              <a href={{item.LINK}}>
                 <div class="md-list-item-text">
-                  <h3>Theme: {{ item.Theme }}</h3>
-                  <h4>Links: {{ item.Links[0].href }}</h4>
+                  <img src={{item.IMAGE}}>
+                </div>
+              </a>
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              &nbsp;
+                <div class="md-list-item-text">
+                  <h3>{{ item.TITLE }}</h3>
+                  <br>
+                  <h4>Catefory: {{ item.CATEGORY }}</h4>
+                  <h4>Date: {{ item.DATE }}</h4>
+                  <h4>Description: {{ item.DESC }}</h4>
+                  <h4>Destination: {{ item.DEST }}</h4>
+                  <div align="right"><h4>Price: <dfn>CNY</dfn>{{ item.PRICE }}</h4></div>
                 </div>
                 <md-divider></md-divider>
+              
               </md-list-item>
             </md-list>
           </md-content>

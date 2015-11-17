@@ -11,11 +11,11 @@ controller('MainCtrl', function($rootScope, $scope, $mdToast, $animate, $http, $
   };
 
   $scope.prices = [{
-    show: '$200',
-    value: 200
+    show: 'Chengdu',
+    value: 'chengdu'
   }, {
-    show: '$300',
-    value: 300
+    show: 'Dunhuang',
+    value: 'dunhuang'
   }, {
     show: '$400',
     value: 400
@@ -54,38 +54,45 @@ controller('MainCtrl', function($rootScope, $scope, $mdToast, $animate, $http, $
     value: 1500
   }];
 $scope.themeslist = [{
-    show: 'BEACH',
-    value: 5200
+    show: 'Great Wall',
+    value: 'Great Wall'
   }, {
-    show: 'DISNEY',
-    value: 5300
+    show: 'Terracotta Warriors',
+    value: 'Terracotta Warriors'
   }, {
-    show: 'GAMBLING',
-    value: 5400
+    show: 'Panda',
+    value: "Panda"
   }, {
-    show: 'HISTORIC',
-    value: 5500
+    show: 'No-Shopping',
+    value: 'No-Shopping'
   }, {
-    show: 'MOUNTAINS',
-    value: 5600
+    show: 'With Accommodation',
+    value: 'With Accommodation'
   }, {
-    show: 'NATIONAL-PARKS',
-    value: 5700
+    show: 'With Air Ticket',
+    value: 'With Air Ticket'
   }, {
-    show: 'OUTDOORS',
-    value: 5800
+    show: 'Pickup & Drop-off',
+    value: 'Pickup & Drop-off'
   }, {
-    show: 'ROMANTIC',
-    value: 5900
+    show: 'Performance',
+    value: 'Performance'
   }, {
-    show: 'SHOPPING',
-    value: 15000
+    show: 'Food & Drink',
+    value: 'Food & Drink'
   }, {
-    show: 'SKIING',
-    value: 51100
+    show: 'Group Tour',
+    value: 'Group Tour'
   }, {
-    show: 'THEME-PARK',
-    value: 51200
+    show: 'Private Tour',
+    value: 'Private Tour'
+  },
+  {
+    show: 'Cruise & Water Tour',
+    value: 'Cruise & Water Tour'
+  }, {
+    show: 'Multi-City Tour',
+    value: 'Multi-City Tour'
   }];
   // The main function that submits the data
   $scope.submit = function() {
@@ -115,16 +122,25 @@ $scope.themeslist = [{
     //       JSON.parse(err.data).message +
     //       '. Try again!');
     //   });
-
-      $http.get('/api/v1/themes')
+      //console.log($scope.ctrl.selectedItem.value);
+      //console.log($scope.info.theme);
+      //$http.get('/api/v1/themes?dest='+$scope.ctrl.selectedItem.value + '&themes=' + $scope.info.theme)
+      console.log($scope.info.maxfare);
+      if($scope.info.maxfare=={$$mdSelectId: 1}){
+        $scope.info.maxfare=null;
+      }
+      console.log($scope.info.theme);
+      $http.get('/api/v1/themes?dest='+$scope.info.maxfare + '&theme=' + $scope.info.theme)
+      //$http.get('/api/v1/themes')
       .success(function(data) {
         console.log(data);
         $scope.results = data;
         $scope.data = data.info;
 
         if ($scope.results.status) {
-          $scope.themes = JSON.parse($scope.data).Themes;
-          console.log($scope.themes);
+          console.log($scope.data);
+          //$scope.themes = JSON.parse($scope.data);
+          //console.log($scope.themes);
           $scope.showSimpleToast('Successfully got themes info');
         } else {
           $scope.showSimpleToast('Error: ' +
