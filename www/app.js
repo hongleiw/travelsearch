@@ -16,42 +16,42 @@ controller('MainCtrl', function($rootScope, $scope, $mdToast, $animate, $http, $
   }, {
     show: 'Dunhuang',
     value: 'dunhuang'
+  },  {
+    show: 'Chongqing',
+    value: 'chongqing'
   }, {
-    show: '$400',
-    value: 400
+    show: 'Dalian',
+    value: 'dalian'
   }, {
-    show: '$500',
-    value: 500
+    show: 'GuangZhou',
+    value: 'guangzhou'
   }, {
-    show: '$600',
-    value: 600
+    show: 'Guilin',
+    value: 'guilin'
   }, {
-    show: '$700',
-    value: 700
+    show: 'Hohhot',
+    value: 'hohhot'
   }, {
-    show: '$800',
-    value: 800
+    show: 'Huangshan',
+    value: "huangshan"
   }, {
-    show: '$900',
-    value: 900
+    show: 'Harbin',
+    value: 'harbin'
   }, {
-    show: '$1000',
-    value: 1000
+    show: 'Jiayuguan',
+    value: 'jiayuguan'
   }, {
-    show: '$1100',
-    value: 1100
+    show: 'Nanjing',
+    value: 'nanjing'
   }, {
-    show: '$1200',
-    value: 1200
+    show: 'Macau',
+    value: 'macau'
   }, {
-    show: '$1300',
-    value: 1300
+    show: 'Taipei',
+    value: 'taipei'
   }, {
-    show: '$1400',
-    value: 1400
-  }, {
-    show: '$1500',
-    value: 1500
+    show: 'Shenyang',
+    value: 'shenyang'
   }];
 $scope.themeslist = [{
     show: 'Great Wall',
